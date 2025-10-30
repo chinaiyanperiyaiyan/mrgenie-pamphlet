@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mr. Genie — Smart Retail Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2A4B8C;
+      --secondary: #FF6B35;
+      --accent: #00C9B1;
+      --light: #F8F9FF;
+      --dark: #1A1A2E;
+      --gray: #6C757D;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7ff 0%, #e6f0ff 100%);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .pamphlet {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+      border-radius: 0px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .header {
+      background: linear-gradient(rgba(42, 75, 140, 0.3), rgba(42, 75, 140, 0.9)), 
+                  url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      z-index: 1;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .logo {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 50%;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    
+    .header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    
+    .tagline {
+      background: var(--secondary);
+      color: white;
+      padding: 12px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.1rem;
+      position: relative;
+    }
+    
+    .tagline::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid var(--secondary);
+    }
+    
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      padding: 50px 30px;
+      background: var(--light);
+    }
+    
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      padding: 0;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+    }
+    
+    .card-image {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .card-content {
+      padding: 25px;
+    }
+    
+    .card h2 {
+      margin-top: 10px;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin: 15px 0;
+    }
+    
+    .card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    
+    .btn:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+    }
+    
+    .bonus {
+      background: linear-gradient(rgba(0, 201, 177, 0.9), rgba(0, 201, 177, 0.9)), 
+                  url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 60px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .bonus::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    }
+    
+    .bonus-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .bonus h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .bonus p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+    
+    .bonus-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .bonus-btn {
+      background: white;
+      color: var(--accent);
+      font-weight: 600;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+    }
+    
+    .bonus-btn:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .contact {
+      background: white;
+      padding: 50px 30px;
+      text-align: center;
+    }
+    
+    .contact h3 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 25px;
+      background: var(--light);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--primary);
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      background: rgba(42, 75, 140, 0.1);
+      border-radius: 50%;
+    }
+    
+    .contact-details p {
+      margin: 0;
+      text-align: left;
+    }
+    
+    .contact-details .label {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    .contact-details .value {
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 0.95rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--accent);
+      transform: translateY(-5px);
+    }
+    
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .offers {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .contact-item {
+        justify-content: center;
+      }
+      
+      .bonus h2 {
+        font-size: 1.8rem;
+      }
+      
+      .bonus p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pamphlet">
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-magic"></i>
+        </div>
+        <h1>Mr. Genie</h1>
+        <p>Smart Retail Solutions</p>
+        <div class="tagline">Your Complete Business Setup at One Place</div>
+      </div>
+    </header>
+
+    <section class="offers">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2042&q=80" alt="Computer" class="card-image">
+        <div class="card-content">
+          <h2>Computer</h2>
+          <div class="price">₹22,000</div>
+          <p>High-performance computers tailored for your retail business needs with latest processors and ample storage.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Billing Machine" class="card-image">
+        <div class="card-content">
+          <h2>Billing Machine</h2>
+          <div class="price">₹6,000</div>
+          <p>Efficient and reliable billing machines for seamless transactions with easy-to-use interface.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Billing App" class="card-image">
+        <div class="card-content">
+          <h2>Billing App</h2>
+          <div class="price">₹5,000</div>
+          <p>User-friendly billing applications to manage your business on the go with inventory tracking.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="bonus">
+      <div class="bonus-content">
+        <div class="bonus-icon">
+          <i class="fas fa-gift"></i>
+        </div>
+        <h2>FREE Website For Every Client!</h2>
+        <p>We believe in complete digital transformation for your business. That's why we're offering a <strong>FREE professional website</strong> with every purchase of our retail solutions. Enhance your online presence and reach more customers at no extra cost!</p>
+        <a href="#" class="btn bonus-btn">Claim Your Free Website</a>
+      </div>
+    </div>
+
+    <div class="contact">
+      <h3>Contact Us</h3>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-details">
+            <p class="label">Address</p>
+            <p class="value">Melur, Madurai</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-details">
+            <p class="label">Phone</p>
+            <p class="value">+91 6381847911</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <div class="contact-details">
+            <p class="label">Website</p>
+            <p class="value">https://mrgenie-web.vercel.app/</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-details">
+            <p class="label">Email</p>
+            <p class="value">support@mrgenie.in</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 Mr. Genie | Smart Retail Solutions</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
